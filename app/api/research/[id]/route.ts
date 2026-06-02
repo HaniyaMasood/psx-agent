@@ -15,6 +15,7 @@ export async function GET(
     status: run.status,
     inputProfile: run.input_profile,
     report: run.report,
+    stateSnapshot: run.state_snapshot,
     threadId: run.thread_id,
     createdAt: run.created_at,
     updatedAt: run.updated_at,

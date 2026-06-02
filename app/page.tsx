@@ -2,7 +2,13 @@ import Link from "next/link";
 import { DisclaimerBanner } from "@/components/DisclaimerBanner";
 import { IntakeForm } from "@/components/IntakeForm";
 
-export default function HomePage() {
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string }>;
+}) {
+  const { error } = await searchParams;
+
   return (
     <main className="mx-auto flex min-h-full max-w-3xl flex-1 flex-col gap-8 px-4 py-10">
       <header>
@@ -19,7 +25,7 @@ export default function HomePage() {
       <DisclaimerBanner />
       <section className="rounded-2xl border border-zinc-800 bg-zinc-950/80 p-6">
         <h2 className="mb-4 text-lg font-semibold text-white">Your investment profile</h2>
-        <IntakeForm />
+        <IntakeForm error={error} />
       </section>
       <p className="text-center text-xs text-zinc-600">
         Data from psxterminal.com and dps.psx.com.pk · Not affiliated with PSX
